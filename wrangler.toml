@@ -1,0 +1,3 @@
+name = "WeezIQ"
+compatibility_date = "2025-08-26"
+nodejs_compat = true
