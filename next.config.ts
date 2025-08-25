@@ -1,6 +1,5 @@
 import type { NextConfig } from "next";
 import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
-import path from "path";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
@@ -18,18 +17,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "secure.gravatar.com" },
     ],
   },
-  webpack: (config, { dev }) => {
-    if (!dev) {
-      config.cache = {
-        type: "filesystem",
-        buildDependencies: {
-          config: [__filename],
-        },
-        cacheDirectory: path.resolve(__dirname, ".next/cache"), // ✅ absolute path
-        compression: "gzip",
-        maxAge: 172800000, // 2 days
-      };
-    }
+  webpack: (config) => {
+    // Simplified webpack config to avoid build issues
+    config.cache = false;
     return config;
   },
 };
