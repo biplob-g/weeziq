@@ -2,11 +2,6 @@
 
 import { auth } from "@clerk/nextjs/server";
 import { client } from "@/lib/prisma";
-import { config } from "dotenv";
-import { resolve } from "path";
-
-// Load environment variables from .env.local
-config({ path: resolve(process.cwd(), ".env.local") });
 
 // Google Sheets API configuration
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;

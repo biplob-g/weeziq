@@ -3,8 +3,6 @@ import { Header } from "@/components/header";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const runtime = 'edge';
-
 interface BlogPostPageProps {
   params: {
     slug: string;

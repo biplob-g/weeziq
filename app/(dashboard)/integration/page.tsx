@@ -2,8 +2,6 @@ import { onGetAllAccountDomains } from "@/actions/auth";
 import IntegrationLayout from "@/components/integration/IntegrationLayout";
 import React from "react";
 
-export const runtime = 'edge';
-
 const IntegrationPage = async () => {
   const domains = await onGetAllAccountDomains();
 
