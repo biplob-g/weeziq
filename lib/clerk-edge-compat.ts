@@ -5,48 +5,48 @@
 export const fs = {
   promises: {
     readFile: async () => {
-      throw new Error('File system operations not available in Edge Runtime');
+      throw new Error("File system operations not available in Edge Runtime");
     },
     writeFile: async () => {
-      throw new Error('File system operations not available in Edge Runtime');
+      throw new Error("File system operations not available in Edge Runtime");
     },
     mkdir: async () => {
-      throw new Error('File system operations not available in Edge Runtime');
+      throw new Error("File system operations not available in Edge Runtime");
     },
     stat: async () => {
-      throw new Error('File system operations not available in Edge Runtime');
+      throw new Error("File system operations not available in Edge Runtime");
     },
   },
   readFileSync: () => {
-    throw new Error('File system operations not available in Edge Runtime');
+    throw new Error("File system operations not available in Edge Runtime");
   },
   writeFileSync: () => {
-    throw new Error('File system operations not available in Edge Runtime');
+    throw new Error("File system operations not available in Edge Runtime");
   },
   existsSync: () => false,
   mkdirSync: () => {
-    throw new Error('File system operations not available in Edge Runtime');
+    throw new Error("File system operations not available in Edge Runtime");
   },
 };
 
 // Mock path module for Edge Runtime
 export const path = {
   dirname: (filePath: string) => {
-    const parts = filePath.split('/');
-    return parts.slice(0, -1).join('/') || '.';
+    const parts = filePath.split("/");
+    return parts.slice(0, -1).join("/") || ".";
   },
   join: (...paths: string[]) => {
-    return paths.join('/').replace(/\/+/g, '/');
+    return paths.join("/").replace(/\/+/g, "/");
   },
   resolve: (...paths: string[]) => {
-    return paths.join('/').replace(/\/+/g, '/');
+    return paths.join("/").replace(/\/+/g, "/");
   },
   extname: (filePath: string) => {
     const match = filePath.match(/\.[^.]*$/);
-    return match ? match[0] : '';
+    return match ? match[0] : "";
   },
   basename: (filePath: string, ext?: string) => {
-    const parts = filePath.split('/');
+    const parts = filePath.split("/");
     const basename = parts[parts.length - 1];
     if (ext && basename.endsWith(ext)) {
       return basename.slice(0, -ext.length);
@@ -57,23 +57,23 @@ export const path = {
 
 // Mock os module for Edge Runtime
 export const os = {
-  platform: () => 'edge',
-  homedir: () => '/tmp',
-  tmpdir: () => '/tmp',
+  platform: () => "edge",
+  homedir: () => "/tmp",
+  tmpdir: () => "/tmp",
   cpus: () => [],
   freemem: () => 0,
   totalmem: () => 0,
   uptime: () => 0,
-  hostname: () => 'edge-runtime',
-  type: () => 'Edge',
-  release: () => '1.0.0',
-  arch: () => 'wasm',
+  hostname: () => "edge-runtime",
+  type: () => "Edge",
+  release: () => "1.0.0",
+  arch: () => "wasm",
   userInfo: () => ({
-    username: 'edge-user',
+    username: "edge-user",
     uid: 0,
     gid: 0,
-    shell: '/bin/sh',
-    homedir: '/tmp',
+    shell: "/bin/sh",
+    homedir: "/tmp",
   }),
 };
 

@@ -1,3 +1,13 @@
-name = "WeezIQ"
-compatibility_date = "2025-08-26"
+name = "weeiq-prod"
+compatibility_date = "2024-01-01"
 nodejs_compat = true
+
+[build]
+command = "npm run build"
+
+[build.upload]
+format = "service-worker"
+
+# Use Node.js runtime for all pages (Clerk compatibility)
+[env.production.runtime]
+type = "nodejs"

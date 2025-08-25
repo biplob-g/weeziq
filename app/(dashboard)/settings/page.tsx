@@ -4,8 +4,6 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
 
-export const runtime = "edge";
-
 const Dashboard = async () => {
   const { userId } = await auth();
   if (!userId) {

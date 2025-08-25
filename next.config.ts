@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["@clerk/nextjs"],
   },
+  // Use Node.js runtime for Clerk compatibility
+  serverRuntimeConfig: {
+    clerkSecretKey: process.env.CLERK_SECRET_KEY,
+  },
+  // Disable Edge Runtime globally for Clerk compatibility
+  runtime: "nodejs",
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "ucarecdn.com" },
@@ -20,14 +26,6 @@ const nextConfig: NextConfig = {
     ],
   },
   webpack: (config) => {
-    // Handle Clerk compatibility with Edge Runtime
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      path: false,
-      os: false,
-    };
-    
     // Simplified webpack config to avoid build issues
     config.cache = false;
     return config;
