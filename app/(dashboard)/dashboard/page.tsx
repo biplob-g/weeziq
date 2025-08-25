@@ -6,7 +6,7 @@ import { onGetAiUsageStats } from "@/actions/settings";
 import { getPlanLimits } from "@/lib/plans";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
-import { onCreateSubscription } from "@/actions/payment";
+
 import {
   Card,
   CardContent,
@@ -30,41 +30,9 @@ import {
 } from "lucide-react";
 import InfoBars from "@/components/infoBar";
 
-interface RazorpayResponse {
-  razorpay_subscription_id: string;
-  razorpay_payment_id: string;
-  razorpay_signature: string;
-}
-
-interface RazorpayOptions {
-  key: string;
-  subscription_id: string;
-  name: string;
-  description: string;
-  handler: (response: RazorpayResponse) => void;
-  prefill: {
-    name: string;
-    email: string;
-  };
-  theme: {
-    color: string;
-  };
-  modal: {
-    ondismiss: () => void;
-  };
-}
-
-declare global {
-  interface Window {
-    Razorpay: new (options: RazorpayOptions) => {
-      open: () => void;
-    };
-  }
-}
-
 const DashboardPage = () => {
   const [subscription, setSubscription] = useState<any>(null);
-  const [_loading, setLoading] = useState<string | null>(null);
+  const [_loading, _setLoading] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [aiUsageStats, setAiUsageStats] = useState<any>(null);
   const { user } = useUser();
@@ -90,87 +58,10 @@ const DashboardPage = () => {
     fetchData();
   }, [user]);
 
-  const _handleUpgrade = async (planId: string) => {
-    if (!user) {
-      toast.error("Please sign in to upgrade your plan");
-      return;
-    }
-
-    setLoading(planId);
-
-    try {
-      const result = await onCreateSubscription(planId as "GROWTH" | "PRO");
-
-      if (!result.success || !result.subscription) {
-        toast.error("Failed to create subscription");
-        return;
-      }
-
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.onload = () => {
-        const options = {
-          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-          subscription_id: result.subscription.id,
-          name: "WeezGen",
-          description: `${planId} Plan Subscription`,
-          handler: async (response: RazorpayResponse) => {
-            try {
-              const verifyResult = await fetch("/api/payment/verify", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  ...response,
-                  planType: planId,
-                }),
-              });
-
-              const verifyData = await verifyResult.json();
-
-              if (verifyData.success) {
-                toast.success(
-                  "Payment successful! Your plan has been upgraded!"
-                );
-                window.location.reload();
-              } else {
-                toast.error(`Payment verification failed: ${verifyData.error}`);
-              }
-            } catch (_error) {
-              toast.error("Payment verification failed");
-            }
-          },
-          prefill: {
-            name: user.fullName || "",
-            email: user.emailAddresses[0]?.emailAddress || "",
-          },
-          theme: {
-            color: "#2563eb",
-          },
-          modal: {
-            ondismiss: () => {
-              setLoading(null);
-            },
-          },
-        } as RazorpayOptions;
-
-        const razorpay = new window.Razorpay(options);
-        razorpay.open();
-      };
-
-      script.onerror = () => {
-        toast.error("Failed to load payment gateway");
-        setLoading(null);
-      };
-
-      document.body.appendChild(script);
-    } catch (_error) {
-      console.error("Payment initiation error:", _error);
-      toast.error("Failed to initiate payment");
-    } finally {
-      setLoading(null);
-    }
+  const _handleUpgrade = async (_planId: string) => {
+    toast.info(
+      "Payment functionality is currently disabled. Please contact support for plan upgrades."
+    );
   };
 
   if (isLoading) {

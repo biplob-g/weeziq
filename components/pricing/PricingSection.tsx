@@ -15,39 +15,6 @@ import { getPlanLimits } from "@/lib/plans";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
-import { onCreateSubscription } from "@/actions/payment";
-
-interface RazorpayResponse {
-  razorpay_subscription_id: string;
-  razorpay_payment_id: string;
-  razorpay_signature: string;
-}
-
-interface RazorpayOptions {
-  key: string;
-  subscription_id: string;
-  name: string;
-  description: string;
-  handler: (response: RazorpayResponse) => void;
-  prefill: {
-    name: string;
-    email: string;
-  };
-  theme: {
-    color: string;
-  };
-  modal: {
-    ondismiss: () => void;
-  };
-}
-
-declare global {
-  interface Window {
-    Razorpay: new (options: RazorpayOptions) => {
-      open: () => void;
-    };
-  }
-}
 
 export const PricingSection = () => {
   const [loading, setLoading] = useState<string | null>(null);
@@ -88,91 +55,10 @@ export const PricingSection = () => {
       return;
     }
 
-    setLoading(planId);
-
-    try {
-      console.log("Creating subscription for plan:", planId);
-      // Create subscription
-      const result = await onCreateSubscription(planId as "GROWTH" | "PRO");
-      console.log("Subscription result:", result);
-
-      if (!result.success || !result.subscription) {
-        toast.error("Failed to create subscription");
-        return;
-      }
-
-      // Load Razorpay script
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.onload = () => {
-        console.log("Razorpay script loaded successfully");
-        console.log(
-          "Environment variable check:",
-          process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID
-        );
-        const options = {
-          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-          subscription_id: result.subscription.id,
-          name: "WeezGen",
-          description: `${planId} Plan Subscription`,
-          handler: async (response: RazorpayResponse) => {
-            try {
-              // Verify payment
-              const verifyResult = await fetch("/api/payment/verify", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  ...response,
-                  planType: planId,
-                }),
-              });
-
-              const verifyData = await verifyResult.json();
-
-              if (verifyData.success) {
-                toast.success("Payment successful! Welcome to WeezGen!");
-                router.push("/dashboard");
-              } else {
-                toast.error("Payment verification failed");
-              }
-            } catch (error) {
-              console.error("Payment verification error:", error);
-              toast.error("Payment verification failed");
-            }
-          },
-          prefill: {
-            name: user.fullName || "",
-            email: user.emailAddresses[0]?.emailAddress || "",
-          },
-          theme: {
-            color: "#2563eb",
-          },
-          modal: {
-            ondismiss: () => {
-              setLoading(null);
-            },
-          },
-        };
-
-        console.log("Razorpay options:", options);
-        const razorpay = new window.Razorpay(options);
-        razorpay.open();
-      };
-
-      script.onerror = () => {
-        toast.error("Failed to load payment gateway");
-        setLoading(null);
-      };
-
-      document.body.appendChild(script);
-    } catch (error) {
-      console.error("Payment initiation error:", error);
-      toast.error("Failed to initiate payment");
-    } finally {
-      setLoading(null);
-    }
+    // Payment functionality is currently disabled
+    toast.info(
+      "Payment functionality is currently disabled. Please contact support for plan upgrades."
+    );
   };
 
   return (
