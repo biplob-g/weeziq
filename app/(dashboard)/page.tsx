@@ -1,22 +1,12 @@
-"use client";
-
 // import InfoBars from "@/components/infoBar";
-import { useAuth } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import React from "react";
 
-const Dashboard = () => {
-  const { userId, isLoaded } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (isLoaded && !userId) {
-      router.push("/auth/sign-in");
-    }
-  }, [userId, isLoaded, router]);
-
-  if (!isLoaded || !userId) {
-    return <div>Loading...</div>;
+const Dashboard = async () => {
+  const { userId } = await auth();
+  if (!userId) {
+    redirect("/auth/sign-in");
   }
   return (
     <>
