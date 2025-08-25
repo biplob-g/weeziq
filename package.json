@@ -19,16 +19,9 @@
     "test:db": "jest --testPathPattern=database",
     "test:integration": "jest --testPathPattern=integration",
     "test:unit": "jest --testPathPattern=unit",
-    "test:socket": "tsx scripts/test-socket-io.ts",
-    "test:realtime": "tsx scripts/test-realtime-chat.ts",
-    "test:customer-room": "tsx scripts/test-customer-room-joining.ts",
-    "test:new-features": "tsx scripts/test-new-features.ts",
-    "test:visitor-tracking": "tsx scripts/test-visitor-tracking.ts",
-    "test:ai-response": "tsx scripts/test-ai-response.ts",
-    "cleanup:old-data": "tsx scripts/cleanup-old-data.ts",
-    "test:customer-chat-flow": "tsx scripts/test-customer-chat-flow.ts",
-    "check:domains": "tsx scripts/check-domains.ts",
-    "test:realtime-chat-flow": "tsx scripts/test-realtime-chat-flow.ts"
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.22.0",
@@ -111,6 +104,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.14",
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.54.2",
     "@tailwindcss/postcss": "^4",
@@ -125,6 +119,7 @@
     "concurrently": "^9.2.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "eslint-plugin-next-on-pages": "^1.13.14",
     "jest": "^30.0.5",
     "jest-environment-jsdom": "^30.0.5",
     "msw": "^2.10.4",
