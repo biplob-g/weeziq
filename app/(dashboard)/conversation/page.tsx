@@ -7,6 +7,8 @@ import ConversationLayout from "@/components/conversations/ConversationLayout";
 // import InfoBars from "@/components/infoBar";
 import React from "react";
 
+export const runtime = "edge";
+
 interface ConversationPageProps {
   searchParams: { room?: string };
 }

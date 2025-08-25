@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
+
+export const runtime = "edge";
 import { client } from "@/lib/prisma";
 
 export async function GET(_request: NextRequest) {
