@@ -4,7 +4,6 @@ import React from "react";
 import { Header } from "@/components/header";
 import AuthHeader from "@/components/auth-header";
 import { BorderBeam } from "@/components/ui/border-beam";
-import ClerkWrapper from "@/components/provider/clerk-wrapper";
 
 type Props = {
   children: React.ReactNode;
@@ -15,8 +14,7 @@ const Layout = async ({ children }: Props) => {
 
   if (user) redirect("/");
   return (
-    <ClerkWrapper>
-      <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-hidden">
       <Header />
 
       {/* Background Pattern */}
@@ -42,7 +40,7 @@ const Layout = async ({ children }: Props) => {
           </div>
         </div>
       </div>
-    </ClerkWrapper>
+    </div>
   );
 };
 

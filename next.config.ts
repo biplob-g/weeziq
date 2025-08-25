@@ -9,15 +9,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    serverComponentsExternalPackages: ["@clerk/nextjs"],
-  },
-  // Use Node.js runtime for Clerk compatibility
-  serverRuntimeConfig: {
-    clerkSecretKey: process.env.CLERK_SECRET_KEY,
-  },
-  // Disable Edge Runtime globally for Clerk compatibility
-  runtime: "nodejs",
+  serverExternalPackages: ["@clerk/nextjs"],
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "ucarecdn.com" },
