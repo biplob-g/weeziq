@@ -25,13 +25,6 @@ export const runtime = "edge";
 
 type Props = { params: { domain: string } };
 
-// Generate static params for all domains at build time
-export async function generateStaticParams() {
-  // Temporarily disable static generation to allow build to succeed
-  console.log("🔧 Static generation disabled for build compatibility");
-  return [];
-}
-
 // Generate metadata for each domain page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
