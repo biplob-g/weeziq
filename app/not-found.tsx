@@ -1,3 +1,4 @@
+import { HeaderStatic } from "@/components/header-static";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FileX } from "lucide-react";
@@ -5,6 +6,7 @@ import { FileX } from "lucide-react";
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      <HeaderStatic />
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
