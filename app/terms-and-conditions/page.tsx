@@ -26,9 +26,9 @@ export default function TermsAndConditionsPage() {
                   1. Acceptance of Terms
                 </h2>
                 <p className="text-muted-foreground">
-                  By using WeezIQ ("Service"), you agree to these Terms and
-                  Conditions. If you disagree with any part, please discontinue
-                  use immediately.
+                  By using WeezIQ (&quot;Service&quot;), you agree to these
+                  Terms and Conditions. If you disagree with any part, please
+                  discontinue use immediately.
                 </p>
               </section>
 
@@ -175,9 +175,9 @@ export default function TermsAndConditionsPage() {
                   9. Limitation of Liability
                 </h2>
                 <p className="text-muted-foreground">
-                  WeezIQ's liability is limited to the amount paid for services
-                  in the 12 months preceding the claim. We are not liable for
-                  indirect, consequential, or punitive damages.
+                  WeezIQ&apos;s liability is limited to the amount paid for
+                  services in the 12 months preceding the claim. We are not
+                  liable for indirect, consequential, or punitive damages.
                 </p>
               </section>
 

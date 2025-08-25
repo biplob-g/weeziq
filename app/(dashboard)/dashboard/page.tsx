@@ -64,7 +64,7 @@ declare global {
 
 const DashboardPage = () => {
   const [subscription, setSubscription] = useState<any>(null);
-  const [loading, setLoading] = useState<string | null>(null);
+  const [_loading, setLoading] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [aiUsageStats, setAiUsageStats] = useState<any>(null);
   const { user } = useUser();
@@ -79,8 +79,8 @@ const DashboardPage = () => {
 
         setSubscription(sub);
         setAiUsageStats(aiStats);
-      } catch (error) {
-        console.error("Error fetching dashboard data:", error);
+      } catch (_error) {
+        console.error("Error fetching dashboard data:", _error);
         toast.error("Failed to load dashboard information");
       } finally {
         setIsLoading(false);
@@ -90,7 +90,7 @@ const DashboardPage = () => {
     fetchData();
   }, [user]);
 
-  const handleUpgrade = async (planId: string) => {
+  const _handleUpgrade = async (planId: string) => {
     if (!user) {
       toast.error("Please sign in to upgrade your plan");
       return;
@@ -137,7 +137,7 @@ const DashboardPage = () => {
               } else {
                 toast.error(`Payment verification failed: ${verifyData.error}`);
               }
-            } catch (error) {
+            } catch (_error) {
               toast.error("Payment verification failed");
             }
           },
@@ -165,8 +165,8 @@ const DashboardPage = () => {
       };
 
       document.body.appendChild(script);
-    } catch (error) {
-      console.error("Payment initiation error:", error);
+    } catch (_error) {
+      console.error("Payment initiation error:", _error);
       toast.error("Failed to initiate payment");
     } finally {
       setLoading(null);
@@ -195,10 +195,10 @@ const DashboardPage = () => {
   const planDetails = getPlanLimits(currentPlan);
 
   // Calculate metrics
-  const totalConversations = subscription.aiCreditsUsed || 0;
-  const successRate = 98.7; // Mock data - could be calculated from actual data
-  const avgResponseTime = "2.3s"; // Mock data
-  const activeVisitors = 127; // This will be updated by InfoBars component
+  const _totalConversations = subscription.aiCreditsUsed || 0;
+  const _successRate = 98.7; // Mock data - could be calculated from actual data
+  const _avgResponseTime = "2.3s"; // Mock data
+  const _activeVisitors = 127; // This will be updated by InfoBars component
 
   // Mock recent activity data
   const recentActivity = [
