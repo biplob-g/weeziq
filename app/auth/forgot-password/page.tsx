@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
+export const runtime = 'edge';
 import { useAuth, useSignIn } from "@clerk/nextjs";
 import type { NextPage } from "next";
 import { useRouter } from "next/navigation";

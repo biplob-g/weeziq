@@ -2,6 +2,8 @@ import { onGetAllAccountDomains } from "@/actions/auth";
 import LeadsLayout from "@/components/leads/LeadsLayout";
 import React from "react";
 
+export const runtime = 'edge';
+
 const LeadsPage = async () => {
   const domains = await onGetAllAccountDomains();
 

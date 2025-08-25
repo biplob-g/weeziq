@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
+export const runtime = 'edge';
+
 import { onGetSubscriptionPlan } from "@/actions/settings";
 import { onGetAiUsageStats } from "@/actions/settings";
 import { getPlanLimits } from "@/lib/plans";
