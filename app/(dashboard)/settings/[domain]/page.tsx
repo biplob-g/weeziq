@@ -21,7 +21,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { Metadata } from "next";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 type Props = { params: { domain: string } };
 

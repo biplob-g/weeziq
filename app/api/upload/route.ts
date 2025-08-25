@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
 import { client } from "@/lib/prisma";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 export async function POST(request: NextRequest) {
   try {

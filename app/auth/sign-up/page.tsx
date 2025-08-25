@@ -4,7 +4,7 @@ import RegistrationFormStep from "@/components/forms/SignUp/registrationStep";
 import ButtonHandler from "@/components/forms/SignUp/buttonHandler";
 import Link from "next/link";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 const SignUp = () => {
   return (

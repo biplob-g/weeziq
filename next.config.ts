@@ -9,7 +9,9 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-
+  experimental: {
+    serverComponentsExternalPackages: ["@clerk/nextjs"],
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "ucarecdn.com" },
@@ -18,6 +20,14 @@ const nextConfig: NextConfig = {
     ],
   },
   webpack: (config) => {
+    // Handle Clerk compatibility with Edge Runtime
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      path: false,
+      os: false,
+    };
+    
     // Simplified webpack config to avoid build issues
     config.cache = false;
     return config;
