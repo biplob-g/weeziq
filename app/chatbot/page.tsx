@@ -3,7 +3,7 @@
 import AiChatBot from "@/components/chatbot";
 import EmbedChatBot from "@/components/chatbot/EmbedChatBot";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 
 // ✅ FIXED: Global initialization lock to prevent multiple chatbot instances
 let isChatbotInitialized = false;
@@ -11,7 +11,7 @@ let isChatbotInitialized = false;
 // ✅ FIXED: Global flag to prevent continuous re-rendering
 let isProcessingDomainId = false;
 
-const ChatBot = () => {
+const ChatBotContent = () => {
   const searchParams = useSearchParams();
   const [isEmbedMode, setIsEmbedMode] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -175,6 +175,14 @@ const ChatBot = () => {
   }
 
   return <AiChatBot />;
+};
+
+const ChatBot = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ChatBotContent />
+    </Suspense>
+  );
 };
 
 export default ChatBot;
