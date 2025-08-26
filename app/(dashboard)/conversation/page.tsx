@@ -8,11 +8,12 @@ import ConversationLayout from "@/components/conversations/ConversationLayout";
 import React from "react";
 
 interface ConversationPageProps {
-  searchParams: { room?: string };
+  searchParams: Promise<{ room?: string }>;
 }
 
 const ConversationPage = async ({ searchParams }: ConversationPageProps) => {
   const domains = await onGetAllAccountDomains();
+  const resolvedSearchParams = await searchParams;
 
   // Fetch initial data server-side
   let initialChatRooms = null;
@@ -25,22 +26,24 @@ const ConversationPage = async ({ searchParams }: ConversationPageProps) => {
     initialChatRooms = await onGetDomainChatRooms(domainId);
 
     // If a specific room is requested, fetch its messages
-    if (searchParams.room) {
-      initialChatMessages = await onGetChatMessages(searchParams.room);
+    if (resolvedSearchParams.room) {
+      initialChatMessages = await onGetChatMessages(resolvedSearchParams.room);
 
       // Find the customer info for the selected room
       if (initialChatRooms?.customer) {
         const targetCustomer = initialChatRooms.customer.find((customer) =>
-          customer.chatRoom.some((room) => room.id === searchParams.room)
+          customer.chatRoom.some(
+            (room) => room.id === resolvedSearchParams.room
+          )
         );
 
         if (targetCustomer) {
           const targetRoom = targetCustomer.chatRoom.find(
-            (room) => room.id === searchParams.room
+            (room) => room.id === resolvedSearchParams.room
           );
           if (targetRoom) {
             initialSelectedConversation = {
-              chatRoomId: searchParams.room,
+              chatRoomId: resolvedSearchParams.room,
               customerId: targetCustomer.id,
               customerName: targetCustomer.name,
               customerEmail: targetCustomer.email,
@@ -60,7 +63,7 @@ const ConversationPage = async ({ searchParams }: ConversationPageProps) => {
       <div className="flex-1 min-h-0">
         <ConversationLayout
           domains={domains?.domains}
-          initialRoomId={searchParams.room}
+          initialRoomId={resolvedSearchParams.room}
           initialChatRooms={initialChatRooms}
           initialChatMessages={initialChatMessages}
           initialSelectedConversation={initialSelectedConversation}

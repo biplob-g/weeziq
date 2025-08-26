@@ -3,7 +3,6 @@
 import React from "react";
 import { Button } from "../../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
-import { Separator } from "../../ui/separator";
 import {
   ArrowLeft,
   MessageCircle,
@@ -121,7 +120,8 @@ const HelpDeskAnswerPage: React.FC<HelpDeskAnswerPageProps> = ({
               {feedback === "not-helpful" && (
                 <div className="mt-3 p-3 bg-muted rounded-lg">
                   <p className="text-xs text-muted-foreground mb-2">
-                    Sorry this wasn't helpful. Would you like to chat with us?
+                    Sorry this wasn&apos;t helpful. Would you like to chat with
+                    us?
                   </p>
                   <Button size="sm" onClick={onStartNewChat}>
                     <MessageCircle className="w-4 h-4 mr-2" />

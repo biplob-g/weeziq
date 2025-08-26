@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import BreadCrumb from "./BreadCrumb";
 import { UserButton } from "@clerk/nextjs";
 import {
   Tooltip,
@@ -13,9 +12,7 @@ import {
 const InfoBars = () => {
   return (
     <div className="flex w-full justify-between items-center py-3 mb-8">
-      <div className="flex items-center gap-6">
-        <BreadCrumb />
-      </div>
+      <div className="flex items-center gap-6"></div>
 
       <div className="flex gap-3 items-center">
         <div className="flex">

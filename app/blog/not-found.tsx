@@ -1,4 +1,4 @@
-import { HeaderStatic } from "@/components/header-static";
+import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FileX } from "lucide-react";
@@ -6,7 +6,7 @@ import { FileX } from "lucide-react";
 export default function BlogNotFound() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <HeaderStatic />
+      <Header />
 
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">

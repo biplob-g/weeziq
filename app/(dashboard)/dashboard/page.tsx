@@ -1,12 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
 
+import React, { useState, useEffect } from "react";
 import { onGetSubscriptionPlan } from "@/actions/settings";
 import { onGetAiUsageStats } from "@/actions/settings";
 import { getPlanLimits } from "@/lib/plans";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
-
 import {
   Card,
   CardContent,
@@ -30,9 +29,40 @@ import {
 } from "lucide-react";
 import InfoBars from "@/components/infoBar";
 
+interface RazorpayResponse {
+  razorpay_subscription_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+}
+
+interface RazorpayOptions {
+  key: string;
+  subscription_id: string;
+  name: string;
+  description: string;
+  handler: (response: RazorpayResponse) => void;
+  prefill: {
+    name: string;
+    email: string;
+  };
+  theme: {
+    color: string;
+  };
+  modal: {
+    ondismiss: () => void;
+  };
+}
+
+declare global {
+  interface Window {
+    Razorpay: new (options: RazorpayOptions) => {
+      open: () => void;
+    };
+  }
+}
+
 const DashboardPage = () => {
   const [subscription, setSubscription] = useState<any>(null);
-  const [_loading, _setLoading] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [aiUsageStats, setAiUsageStats] = useState<any>(null);
   const { user } = useUser();
@@ -47,8 +77,8 @@ const DashboardPage = () => {
 
         setSubscription(sub);
         setAiUsageStats(aiStats);
-      } catch (_error) {
-        console.error("Error fetching dashboard data:", _error);
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
         toast.error("Failed to load dashboard information");
       } finally {
         setIsLoading(false);
@@ -57,12 +87,6 @@ const DashboardPage = () => {
 
     fetchData();
   }, [user]);
-
-  const _handleUpgrade = async (_planId: string) => {
-    toast.info(
-      "Payment functionality is currently disabled. Please contact support for plan upgrades."
-    );
-  };
 
   if (isLoading) {
     return (
@@ -84,12 +108,6 @@ const DashboardPage = () => {
 
   const currentPlan = subscription.plan || "STARTER";
   const planDetails = getPlanLimits(currentPlan);
-
-  // Calculate metrics
-  const _totalConversations = subscription.aiCreditsUsed || 0;
-  const _successRate = 98.7; // Mock data - could be calculated from actual data
-  const _avgResponseTime = "2.3s"; // Mock data
-  const _activeVisitors = 127; // This will be updated by InfoBars component
 
   // Mock recent activity data
   const recentActivity = [

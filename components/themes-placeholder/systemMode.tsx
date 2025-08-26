@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+const SystemMode = () => {
+  return <div>SystemMode</div>;
+};
 
-const SystemMode = (props: Props) => {
-  return (
-    <div>SystemMode</div>
-  )
-}
-
-export default SystemMode
+export default SystemMode;

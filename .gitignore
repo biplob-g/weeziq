@@ -52,17 +52,12 @@ next-env.d.ts
 # clerk configuration (can include secrets)
 /.clerk/
 .env.local
-
+node_modules
 .cursor
 FEATURES_IMPLEMENTATION.md
 FILE_UPLOAD_FEATURE.md
 GEMINI_SETUP.md
 GOOGLE_INTEGRATION_SETUP.md
 GOOGLE_SHEETS_INTEGRATION.md
-jest.config.js
-jest.setup.js
-LEADS_PAGE.md
-playwright.config.ts
 STATIC_GENERATION.md
-start-dev.bat
-start-dev.ps1
+.swc

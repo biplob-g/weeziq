@@ -29,7 +29,6 @@ const HelpDeskListPage: React.FC<HelpDeskListPageProps> = ({
   isLoading = false,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const filteredQuestions = useMemo(() => {
     return questions.filter((q) => {
@@ -143,7 +142,7 @@ const HelpDeskListPage: React.FC<HelpDeskListPageProps> = ({
       <div className="p-4 border-t bg-muted/20">
         <div className="text-center">
           <p className="text-xs text-muted-foreground mb-2">
-            Can't find what you're looking for?
+            Can&apos;t find what you&apos;re looking for?
           </p>
           <Button onClick={onStartNewChat} size="sm">
             <MessageCircle className="w-4 h-4 mr-2" />

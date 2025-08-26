@@ -10,8 +10,9 @@ export function CTASection() {
             Ready to 10x Your Sales?
           </h2>
           <p className="text-muted-foreground text-sm md:text-base font-medium leading-[18.20px] md:leading-relaxed break-words max-w-2xl">
-            Join thousands of sales teams who've transformed their conversion
-            rates with AI-powered sales automation. Start your free trial today.
+            Join thousands of sales teams who&apos;ve transformed their
+            conversion rates with AI-powered sales automation. Start your free
+            trial today.
           </p>
         </div>
         <Link

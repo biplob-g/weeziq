@@ -13,7 +13,10 @@
  * The page maintains all existing functionality while adding static generation.
  */
 
-import { onGetCurrentDomainInfo } from "@/actions/settings";
+import {
+  onGetCurrentDomainInfo,
+  getAllDomainsForStaticGeneration,
+} from "@/actions/settings";
 import SettingsForm from "@/components/forms/SignUp/settings/form";
 import InfoBars from "@/components/infoBar";
 import BotTrainingForm from "@/components/settings/BotTrainingForm";
@@ -21,12 +24,40 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { Metadata } from "next";
 
-type Props = { params: { domain: string } };
+type Props = { params: Promise<{ domain: string }> };
+
+// Generate static params for all domains at build time
+export async function generateStaticParams() {
+  try {
+    console.log("🔧 Generating static params for domain settings pages...");
+
+    const allDomains = await getAllDomainsForStaticGeneration();
+
+    console.log(`📊 Found ${allDomains.length} domains for static generation`);
+
+    // Generate static paths for each domain
+    const params = allDomains.map((domain) => ({
+      domain: domain.name,
+    }));
+
+    console.log(
+      "✅ Generated static params:",
+      params.map((p) => p.domain)
+    );
+
+    return params;
+  } catch (error) {
+    console.error("❌ Error generating static params:", error);
+    // Return empty array to prevent build failure
+    return [];
+  }
+}
 
 // Generate metadata for each domain page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const domain = await onGetCurrentDomainInfo(params.domain);
+    const resolvedParams = await params;
+    const domain = await onGetCurrentDomainInfo(resolvedParams.domain);
 
     if (!domain || !domain.domains || domain.domains.length === 0) {
       return {
@@ -55,7 +86,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const DomainSettingsPage = async ({ params }: Props) => {
-  const domain = await onGetCurrentDomainInfo(params.domain);
+  const resolvedParams = await params;
+  const domain = await onGetCurrentDomainInfo(resolvedParams.domain);
 
   // Add debugging
   console.log("Domain result:", domain);

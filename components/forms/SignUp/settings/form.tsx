@@ -3,7 +3,6 @@
 import { Separator } from "@/components/ui/separator";
 import { useSettings } from "@/hooks/settings/useSettings";
 import React from "react";
-import { Form } from "react-hook-form";
 import DomainUpdate from "./DomainUpdate";
 import CodeSnippet from "./CodeSnippet";
 import { Crown } from "lucide-react";
@@ -31,7 +30,7 @@ type Props = {
   } | null;
 };
 
-const SettingsForm = ({ id, name, plan, chatBot }: Props) => {
+const SettingsForm = ({ id, name, chatBot }: Props) => {
   const {
     register,
     onUpdateSettings,

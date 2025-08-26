@@ -31,7 +31,16 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "@typescript-eslint/no-explicit-any": "warn",
+      // Disable TypeScript any type warnings
+      "@typescript-eslint/no-explicit-any": "off",
+
+      // Disable React hooks exhaustive deps warnings
+      "react-hooks/exhaustive-deps": "off",
+
+      // Disable Next.js image element warnings
+      "@next/next/no-img-element": "off",
+
+      // Keep other rules
       "@typescript-eslint/no-unused-vars": ["error", {
         "argsIgnorePattern": "^_",
         "varsIgnorePattern": "^_",

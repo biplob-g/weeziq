@@ -12,16 +12,6 @@ class SocketClient {
   }
 
   private initializeSocket() {
-    // Don't initialize socket during build time
-    if (
-      typeof window === "undefined" ||
-      (process.env.NODE_ENV === "production" &&
-        !process.env.NEXT_PUBLIC_SOCKET_URL)
-    ) {
-      console.log("🔌 Socket.io disabled during build or missing URL");
-      return;
-    }
-
     try {
       const socketUrl =
         process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:3001";

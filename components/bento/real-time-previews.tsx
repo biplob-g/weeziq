@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
 const RealtimeCodingPreviews: React.FC = () => {
   const themeVars = {
@@ -13,7 +13,7 @@ const RealtimeCodingPreviews: React.FC = () => {
     "--realtime-border-color": "hsl(var(--border))",
     "--realtime-border-main": "hsl(var(--border))",
     "--realtime-connection-color": "hsl(var(--muted-foreground))",
-  }
+  };
 
   return (
     <div
@@ -39,7 +39,8 @@ const RealtimeCodingPreviews: React.FC = () => {
           transform: "translateX(-50%)",
           width: "350px",
           height: "221px",
-          background: "linear-gradient(180deg, var(--realtime-background-editor) 0%, transparent 100%)",
+          background:
+            "linear-gradient(180deg, var(--realtime-background-editor) 0%, transparent 100%)",
           backdropFilter: "blur(7.907px)",
           borderRadius: "9.488px",
           border: "1px solid var(--realtime-border-main)",
@@ -63,7 +64,8 @@ const RealtimeCodingPreviews: React.FC = () => {
         >
           <div
             style={{
-              fontFamily: "'Geist Mono', 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+              fontFamily:
+                "'Geist Mono', 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
               fontSize: "10.279px",
               lineHeight: "15.814px",
               letterSpacing: "-0.3163px",
@@ -78,38 +80,162 @@ const RealtimeCodingPreviews: React.FC = () => {
               justifyContent: "center",
             }}
           >
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>switch (type) {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> case 'success':</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> return {"{"}</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
-              {" "}
-              border: theme === 'dark' ? 'border-[rgba(34,197,94,0.4)]' : 'border-green-200',
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              switch (type) {"{"}
             </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> icon: (</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
               {" "}
-              &lt;svg className={"{baseIconClasses}"} fill="none" viewBox="0 0 14 14"&gt;
+              case &quot;success&quot;:{" "}
             </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> &lt;path</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
               {" "}
-              d="M3.85156 7.875L6.47656 10.5L10.8516 3.5"
+              return {"{"}
             </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
               {" "}
-              stroke="var(--realtime-primary-color)"
+              border: theme === &quot;dark&quot; ?
+              &quot;border-[rgba(34,197,94,0.4)]&quot; :
+              &quot;border-green-200&apos;,
             </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
               {" "}
-              strokeLinecap="round"
+              icon: (
             </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
               {" "}
-              strokeLinejoin="round"
+              &lt;svg className={"{baseIconClasses}"} fill=&quot;none&quot;
+              viewBox=&quot;0 0 14 14&quot;&gt;
             </p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> strokeWidth="1.5"</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> /&gt;</p>
-            <p style={{ margin: 0, whiteSpace: "pre-wrap", fontWeight: 400, display: "block" }}> &lt;/svg&gt;</p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              &lt;path
+            </p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              d=&quot;M3.85156 7.875L6.47656 10.5L10.8516 3.5&quot;
+            </p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              stroke=&quot;var(--realtime-primary-color)&quot;
+            </p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              strokeLinecap=&quot;round&quot;
+            </p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              strokeLinejoin=&quot;round&quot;
+            </p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              strokeWidth=&quot;1.5&quot;
+            </p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              /&gt;
+            </p>
+            <p
+              style={{
+                margin: 0,
+                whiteSpace: "pre-wrap",
+                fontWeight: 400,
+                display: "block",
+              }}
+            >
+              {" "}
+              &lt;/svg&gt;
+            </p>
           </div>
         </div>
       </div>
@@ -123,7 +249,8 @@ const RealtimeCodingPreviews: React.FC = () => {
           transform: "translateX(-50%)",
           width: "175px",
           height: "221px",
-          background: "linear-gradient(180deg, var(--realtime-background-preview) 0%, transparent 100%)",
+          background:
+            "linear-gradient(180deg, var(--realtime-background-preview) 0%, transparent 100%)",
           backdropFilter: "blur(7.907px)",
           borderRadius: "9.488px",
           borderTopRightRadius: "9.488px",
@@ -174,7 +301,8 @@ const RealtimeCodingPreviews: React.FC = () => {
           >
             <div
               style={{
-                fontFamily: "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                fontFamily:
+                  "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                 fontSize: "20.558px",
                 lineHeight: "31.628px",
                 letterSpacing: "-0.6326px",
@@ -229,13 +357,31 @@ const RealtimeCodingPreviews: React.FC = () => {
             }}
           >
             <defs>
-              <linearGradient id="connectionGradient" x1="1" y1="0" x2="1" y2="285.088" gradientUnits="userSpaceOnUse">
-                <stop stopColor="var(--realtime-primary-color)" stopOpacity="0" />
+              <linearGradient
+                id="connectionGradient"
+                x1="1"
+                y1="0"
+                x2="1"
+                y2="285.088"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop
+                  stopColor="var(--realtime-primary-color)"
+                  stopOpacity="0"
+                />
                 <stop offset="0.5" stopColor="var(--realtime-primary-color)" />
-                <stop offset="1" stopColor="var(--realtime-primary-color)" stopOpacity="0" />
+                <stop
+                  offset="1"
+                  stopColor="var(--realtime-primary-color)"
+                  stopOpacity="0"
+                />
               </linearGradient>
             </defs>
-            <path d="M1 0V285.088" stroke="url(#connectionGradient)" strokeWidth="2" />
+            <path
+              d="M1 0V285.088"
+              stroke="url(#connectionGradient)"
+              strokeWidth="2"
+            />
           </svg>
         </div>
       </div>
@@ -246,12 +392,17 @@ const RealtimeCodingPreviews: React.FC = () => {
 
       <style jsx>{`
         @keyframes pulse {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 1; }
+          0%,
+          100% {
+            opacity: 0.4;
+          }
+          50% {
+            opacity: 1;
+          }
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default RealtimeCodingPreviews
+export default RealtimeCodingPreviews;

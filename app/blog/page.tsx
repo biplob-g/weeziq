@@ -1,5 +1,5 @@
 import { BlogArchive } from "@/components/blog/blog-archive";
-import { HeaderStatic } from "@/components/header-static";
+import { Header } from "@/components/header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <HeaderStatic />
+      <Header />
 
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">

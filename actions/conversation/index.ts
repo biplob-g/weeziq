@@ -243,7 +243,7 @@ export const onFindCustomerByIP = async (domainId: string) => {
     // ✅ FIXED: Skip IP detection if disabled via environment variable or in development
     if (
       process.env.SKIP_IP_DETECTION === "true" ||
-      process.env.NODE_ENV === "development"
+      (process.env.NODE_ENV as string) === "development"
     ) {
       console.log(
         "🔄 IP detection disabled (development mode or env flag), skipping"
@@ -256,7 +256,7 @@ export const onFindCustomerByIP = async (domainId: string) => {
 
     // ✅ FIXED: Minimal logging to prevent console spam
     if (
-      process.env.NODE_ENV === "development" &&
+      (process.env.NODE_ENV as string) === "development" &&
       process.env.DEBUG_IP === "true"
     ) {
       console.log("🔍 IP Detection:", { domainId, clientIP });
@@ -311,7 +311,7 @@ export const onFindCustomerByIP = async (domainId: string) => {
 
     // ✅ FIXED: Minimal logging to prevent console spam
     if (
-      process.env.NODE_ENV === "development" &&
+      (process.env.NODE_ENV as string) === "development" &&
       process.env.DEBUG_IP === "true"
     ) {
       console.log("✅ Customer found by IP:", customer ? "YES" : "NO");

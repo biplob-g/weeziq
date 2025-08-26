@@ -44,9 +44,6 @@ const ChatCard = ({
   showDelete = false,
   seen,
   customerName,
-  customerEmail,
-  customerPhone,
-  customerCountryCode,
   isExpired = false,
   isSelected = false, // NEW: Default to false
 }: Props) => {

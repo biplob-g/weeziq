@@ -179,7 +179,7 @@ const ChatBotContent = () => {
 
 const ChatBot = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading chatbot...</div>}>
       <ChatBotContent />
     </Suspense>
   );
